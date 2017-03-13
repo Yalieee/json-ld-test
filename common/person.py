@@ -1,6 +1,6 @@
 class Person(object):
-	def __init__(self, name="", email="", job_title="", colleagues=None):
-		self.set_attribute(name, email, job_title, colleagues)
+	def __init__(self, uid="", name="", email="", job_title="", colleagues=None):
+		self.set_attribute(uid, name, email, job_title, colleagues)
 
 	def __str__(self):
 		if self.colleagues:
@@ -11,7 +11,8 @@ class Person(object):
 		else:
 			return "Person {0} ({1}) (E-mail:{2})".format(self.name, self.job_title, self.email)
 
-	def set_attribute(self, name="", email="", job_title="", colleagues=None):
+	def set_attribute(self, uid="", name="", email="", job_title="", colleagues=None):
+		self.uid = uid
 		self.name = name
 		self.email = email
 		self.job_title = job_title

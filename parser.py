@@ -21,7 +21,7 @@ class JsonLdParser(object):
 		
 		if node_type in ["http://schema.org/Person", "https://schema.org/Person"]:
 			colleagues = JsonLdParser._find_colleagues(json_body)
-			return Person(json_body['name'], json_body['email'], json_body['jobTitle'], colleagues)
+			return Person(json_body['@id'], json_body['name'], json_body['email'], json_body['jobTitle'], colleagues)
 		else:
 			return None
 
