@@ -1,0 +1,22 @@
+{
+    "@context": "http://schema.org",
+    "@type": "Person",
+    "colleague": [
+        {
+            "@type": "Person",
+            "name": "Bob",
+            "email": "bob@example.com",
+            "jobTitle": "Developer"
+        },
+        {
+            "@type": "Person",
+            "name": "Cammy",
+            "email": "cammy@example.com",
+            "jobTitle": "Sr. Developer"
+        }
+    ],
+    "name": "Alice",
+    "email": "Alice@example.com",
+    "jobTitle": "Sr. Developer",
+    "image": "http://example.com/person/alice/image.jpg"
+}
