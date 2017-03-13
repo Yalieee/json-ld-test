@@ -5,7 +5,7 @@
     "colleague": [
         {
             "@type": "Person",
-            "@id": "http://person.example.com/bod",
+            "@id": "http://person.example.com/bob",
             "name": "Bob",
             "email": "bob@example.com",
             "jobTitle": "Developer"
