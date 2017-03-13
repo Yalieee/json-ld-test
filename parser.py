@@ -20,22 +20,23 @@ class JsonLdParser(object):
 		node_type = JsonLdParser.get_node_type(json_body)
 		
 		if node_type in ["http://schema.org/Person", "https://schema.org/Person"]:
-			# find colleagues
-			colleagues = []
-			if 'colleague' in json_body and isinstance(json_body['colleague'], list):
-				for colleague in json_body['colleague']:
-					if '@context' not in colleague:
-						colleague['@context'] = json_body['@context']
-					node_object = JsonLdParser.generate_node_object(colleague)
-					colleagues.append(node_object)
-
+			colleagues = JsonLdParser._find_colleagues(json_body)
 			return Person(json_body['name'], json_body['email'], json_body['jobTitle'], colleagues)
 		else:
 			return None
+
+	@staticmethod
+	def _find_colleagues(json_body):
+		colleagues = []
+		if 'colleague' in json_body and isinstance(json_body['colleague'], list):
+			for colleague in json_body['colleague']:
+				if '@context' not in colleague:
+					colleague['@context'] = json_body['@context']
+				node_object = JsonLdParser.generate_node_object(colleague)
+				colleagues.append(node_object)
+		return colleagues
 
 
 json_body = util.get_json("https://raw.githubusercontent.com/Yalieee/json-ld-test/master/json/person.json")
 
 print JsonLdParser.generate_node_object(json_body)
-
-
