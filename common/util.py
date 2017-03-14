@@ -4,9 +4,19 @@ import urlparse
 
 
 def get_json(url):
-	response = requests.get(url)
 	try:
+		response = requests.get(url)
 		result = json.loads(response.text)
+	except BaseException as e:
+		result = {}
+		print e
+	return result
+
+
+def get_json_local(fpath):
+	try:
+		with open(fpath) as fp:
+			result = json.loads(fp.read())
 	except BaseException as e:
 		result = {}
 		print e

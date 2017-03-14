@@ -1,5 +1,6 @@
 import requests
 import json
+import os
 import urlparse
 from common import util
 from common.person import Person
@@ -38,5 +39,6 @@ class JsonLdParser(object):
 
 
 json_body = util.get_json("https://raw.githubusercontent.com/Yalieee/json-ld-test/master/json/person.json")
+# json_body = util.get_json_local(os.path.join(".", "json", "person.json"))
 
 print JsonLdParser.generate_node_object(json_body)
